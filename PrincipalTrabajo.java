@@ -9,10 +9,10 @@ public class PrincipalTrabajo {
         Scanner scan = new Scanner(System.in);
         boolean run = true;
         while(run){
-            System.out.println("\n Si el numero a ingresar es 0 se detendra el programa");
+            System.out.println("\nSi el numero a ingresar es 0 se detendra el programa");
             System.out.println("Si el numero a ingresar es 1 se creara un Zombie");
-            System.out.println("Si el numero a ingresar es 2 se mostrara la cantidad de Zombies creados");
-            System.out.println("Si el numero a ingresar es 3 se mostrara la informacion de cada Zombie creado");
+            System.out.println("Si el numero a ingresar es 2 se mostrara la informacion de cada Zombie creados");
+            System.out.println("Si el numero a ingresar es 3 se mostrara la cantidad de Zombies creados");
             System.out.println("Si el numero a ingresar es 4 se mostrara la información de los Zombies que tengan tipo de de sangre “O+” o “AB+”");
             System.out.println("Si el numero a ingresar es 5 se mostrara la informacion de los Zombies que nacieron despues del 2000");
             System.out.println("Si el numero a ingresar es 6 se disminuira a la mitad la salud de todos los zombies");
@@ -21,12 +21,13 @@ public class PrincipalTrabajo {
             System.out.println("Si el numero a ingresar es 9 se mostrara la información de la ubicación más segura de la ciudad");
             System.out.println("Si el numero a ingresar es 10 se mostrara la información de todas las ubicaciones de la ciudad ordenadas por distancia a Alexandria");
             System.out.println("Si el numero a ingresar es 11 se mostrara una frase aleatoria sobre Zombies");
-            System.out.println("Si el numero a ingresar es 12 ");
+            System.out.println("Si el numero a ingresar es 12 se eliminara un zombie");
             System.out.println("Ingrese un numero:");
             int num = scan.nextInt();
             switch(num){
                 case 0:
                     run = false;
+                    System.out.println("\nFin del programa");
                     break;    
                 case 1:
                     System.out.println("\nIngrese el nombre de un Zombie:");
@@ -41,9 +42,6 @@ public class PrincipalTrabajo {
                     Zombie z1 = new Zombie(nombre, salud, fecha,tiposangre);
                     break;
                 case 2:
-                    System.out.println("\nLa cantidad de zombies creados es: " + Zombie.zombies.size());
-                    break;
-                case 3:
                     if(Zombie.zombies.size() == 0){
                         System.out.println("\nNo hay informacion de ningun zombie");
                     }else{
@@ -55,6 +53,9 @@ public class PrincipalTrabajo {
                             System.out.println("Tipo de sangre: " + Zombie.zombies.get(i).getTipoSangre());
                         }
                     }
+                    break;
+                case 3:
+                    System.out.println("\nLa cantidad de zombies creados es: " + Zombie.zombies.size());
                     break;
                 case 4:
                     int contador = 0;
@@ -109,7 +110,7 @@ public class PrincipalTrabajo {
                 case 7:
                     System.out.println("\nIngrese el nombre de una ubicacion:");
                     String ubicacion = scan.next();
-                    System.out.println("Ingrese la distancia entre Alexandria y " + ubicacion + ":");
+                    System.out.println("Ingrese la distncia entre Alexandria y " + ubicacion + ":");
                     double distancia = scan.nextDouble();
                     System.out.println("Ingrese la cantidad de zombies que hay en " + ubicacion + ":");
                     int cantZombies = scan.nextInt();
@@ -146,29 +147,30 @@ public class PrincipalTrabajo {
                         System.out.println("Cantidad de zombies: " + Ubicacion.ubicaciones.get(y).getCantZombies());
                     }
                     break;
-                case 10:   
-                        if(Ubicacion.ubicaciones.size() == 0){
-                            System.out.println("\nNo hay informacion de ninguna ubicacion");
-                        }else{
-                            Ubicacion.ordenamiento(Ubicacion.ubicaciones,Ubicacion.ubicaciones.size());
-                            System.out.println("\nInformación de todas las ubicaciones de la ciudad ordenadas por distancia a Alexandria");
-                            for(int i=0; i<Ubicacion.ubicaciones.size(); i++){
-                                System.out.println("\nUbicacion# " + (i+1) + ":");
-                                System.out.println("Nombre: " + Ubicacion.ubicaciones.get(i).getNombre());
-                                System.out.println("Distancia: " + Ubicacion.ubicaciones.get(i).getDistancia());
-                                System.out.println("Cantidad de zombies: " + Ubicacion.ubicaciones.get(i).getCantZombies());
-                            }
+                case 10:    
+                    if(Ubicacion.ubicaciones.size() == 0){
+                        System.out.println("\nNo hay informacion de ninguna ubicacion");
+                    }else{
+                        Ubicacion.ordenamiento(Ubicacion.ubicaciones,Ubicacion.ubicaciones.size());
+                        System.out.println("\nInformación de todas las ubicaciones de la ciudad ordenadas por distancia a Alexandria");
+                        for(int i=0; i<Ubicacion.ubicaciones.size(); i++){
+                            System.out.println("\nUbicacion# " + (i+1) + ":");
+                            System.out.println("Nombre: " + Ubicacion.ubicaciones.get(i).getNombre());
+                            System.out.println("Distancia: " + Ubicacion.ubicaciones.get(i).getDistancia());
+                            System.out.println("Cantidad de zombies: " + Ubicacion.ubicaciones.get(i).getCantZombies());
                         }
+                    }
                     break;
-                case 11 :
-                    ArrayList palabras = new ArrayList () ;
-                        palabras.add ("2 zombies que cuentan chistes...zombienchistosos...?");
-                        palabras.add ("¿Cuál es el colmo de zombie?...Asistir a un concierto en vivo");
-                        palabras.add ("Zombies...Los unicos seres que te aman por tu cerebro");
-                        palabras.add ("Si los Zombies tienen la mirada torcida...Zombizcos?");
-                        palabras.add("Sí los zombies se deshacen con el pasar del tiempo...¿zombiodegradables?");
-                        int a = (int) (Math. random() * 5);
-                        System. out.println (palabras.get (a) ) ;
+                case 11:
+                    ArrayList frases = new ArrayList();
+                    frases.add("2 zombies que cuentan chistes...zombienchistosos...?");
+                    frases.add("Cual es el colmo de un zombie...asistir a un concierto en vivo...");
+                    frases.add("Zombies...los unicos seres que te aman por tu cerebro");
+                    frases.add("2 zombies que cuentan chistes...zombienchistosos...?");
+                    frases.add("Si los zombis tienen la mirada torcida...Zombizcos?");
+                    frases.add("Los zombis se deshacen con el paso del tiempo...Zombiodegradables?");
+                    int a = (int) (Math. random() * 5);
+                    System. out.println (frases.get (a)) ;
                     break;
                 case 12:
                     int contador3 = 0;
@@ -191,10 +193,7 @@ public class PrincipalTrabajo {
                         System.out.println("\nEl zombie " + (numZombie + 1) + " ha sido eliminado");
                     }
                     break;
-            }   
-            
+            }
         }
-        scan.close();
     }
-    
 }
